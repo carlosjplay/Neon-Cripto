@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+
+development:
+  <<: *default
+  database: neon_cripto_development
+
+test:
+  <<: *default
+  database: neon_cripto_test
+
+production:
+  <<: *default
+  database: neon_cripto_production
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
