@@ -1,0 +1,14 @@
+<h1>Dashboard</h1>
+
+<% if @subscriptions.present? %>
+  <ul>
+    <% @subscriptions.each do |sub| %>
+      <li>
+        Plano: <%= sub.plan %> |
+        Status: <%= sub.status %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Você ainda não possui assinaturas.</p>
+<% end %>
