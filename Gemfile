@@ -1,33 +1,41 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2' # ajuste para a versão que você está usando
+ruby "3.4.0"
 
-# Gems principais do Rails
-gem 'rails', '~> 7.0.0'
-gem 'pg', '~> 1.5'          # PostgreSQL
-gem 'puma', '~> 5.0'        # servidor web
-gem 'sass-rails', '>= 6'    # CSS
-gem 'webpacker', '~> 5.0'   # JS
-gem 'turbolinks', '~> 5'    # navegação rápida
-gem 'jbuilder', '~> 2.7'    # JSON builder
+# Framework principal
+gem "rails", "~> 7.0.10"
 
-# Desenvolvimento e testes
+# Banco de dados SQLite (versão estável no Termux)
+gem "sqlite3", "~> 1.6"
+
+# Nokogiri fixado em versão que compila bem
+gem "nokogiri", "1.18.10"
+
+# Servidor web
+gem "puma", "~> 5.0"
+
+# Front-end
+gem "sass-rails", ">= 6"
+gem "webpacker", "~> 5.0"
+gem "turbolinks", "~> 5"
+gem "jbuilder", "~> 2.7"
+
+# Testes
 group :development, :test do
-  gem 'rspec-rails'         # testes com RSpec
-  gem 'factory_bot_rails'   # factories para testes
-  gem 'faker'               # dados falsos para testes
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 
-# Desenvolvimento apenas
+# Desenvolvimento
 group :development do
-  gem 'listen', '~> 3.3'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "web-console", ">= 4.1.0"
+  gem "listen", "~> 3.3"
+  gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
 end
 
-# Produção
+# Produção (opcional, se quiser usar PostgreSQL em deploy)
 group :production do
-  gem 'pg'
+  gem "pg", "~> 1.5"
 end
